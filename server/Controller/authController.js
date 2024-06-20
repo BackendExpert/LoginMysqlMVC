@@ -19,7 +19,7 @@ const authController = {
             }
             else{
                 const hashPass = await bcrypt.hash(password, 10)
-                console.log(hashPass)
+                // console.log(hashPass)
                 if(hashPass){
                     const newUser = User.create({
                         username: username,
