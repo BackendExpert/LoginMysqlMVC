@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const JkMysql = require('jkmysql-easy');
+
 
 // get all routes
 const authRoute = require('./Routes/authRoute')
