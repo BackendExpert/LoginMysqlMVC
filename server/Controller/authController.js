@@ -40,7 +40,7 @@ const authController = {
         })
     },
     SignIn: (req, res) => {
-        
+        console.log(req.body)
     }
 }
 
