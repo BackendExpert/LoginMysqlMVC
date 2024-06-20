@@ -19,7 +19,7 @@ const SignIn = () => {
         // login to system
 
         try{
-            const res = await axios.post('http://localhost:8081/SignIn', LoginData)
+            const res = await axios.post('http://localhost:8081/auth/SignIn', LoginData)
 
             const loginToken = res.data.Token;
 
