@@ -11,6 +11,14 @@ const authController = {
             password,
         } = req.body;
 
+        User.findByUsernameOrEmail(username, email, (err, result) => {
+            if(err) throw err
+
+            if(result.length > 0){
+                return res.json({ Error: "User is Already Exists" })
+            }
+        })
+
         const hashPass = await bcrypt.hash(password, 10)
 
         if(hashPass){
