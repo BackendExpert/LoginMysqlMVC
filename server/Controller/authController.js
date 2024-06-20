@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../Models/User')
 
 const authController = {
-    SignUp: (req, res) => {
+    SignUp: async (req, res) => {
         // console.log(req.body)
         const {
             username,
@@ -11,15 +11,15 @@ const authController = {
             password,
         } = req.body;
 
-        User.findByUsernameOrEmail(username, email, (err, result) => {
+        User.findByUsernameOrEmail(username, email, async (err, result) => {
             if(err) throw err
 
             if(result.length > 0){
                 return res.json({ Error: "User is Already Exists" })
             }
             else{
-                const hashPass = bcrypt.hash(password, 10)
-
+                const hashPass = await bcrypt.hash(password, 10)
+                console.log(hashPass)
                 if(hashPass){
                     const newUser = User.create({
                         username: username,
