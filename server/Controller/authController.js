@@ -56,15 +56,15 @@ const authController = {
 
             const person = result[0]
 
-            bcrypt.compare(password, person.password, (err, result) => {
+            bcrypt.compare(password, person.password, (err, passMatch) => {
                 if(err) throw err
 
-                if(!result) {
+                if(!passMatch) {
                     return res.json({ Error: "Password not Match" })
                 }
                 else{
                     const token = jwt.sign({ email: person.email }, 'your_jwt_secret', { expiresIn: '1h' })
-                    return res.json({ Msg: "Success", Token:token,  })
+                    return res.json({ Msg: "Success", Token:token, LoginUser:result })
                 }
             })
         })
