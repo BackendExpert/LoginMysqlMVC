@@ -30,6 +30,8 @@ const authController = {
                         is_active: 1,
                         is_lock: 0
                     })
+
+                    return res.json({ Status: "Success" })
                 }
                 else{
                     return res.json({ Error: "Error White Hashing Password" })
