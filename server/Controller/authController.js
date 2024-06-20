@@ -14,11 +14,11 @@ const authController = {
         const hashPass = await bcrypt.hash(password, 10)
 
         if(hashPass){
-            User.create({
+            const newUser = User.create({
                 username: username,
-                email: email, 
-                password: hashPass, 
-                role: "User", 
+                email: email,
+                password: hashPass,
+                role: "User",
                 create_at: new Date(),
                 is_active: 1,
                 is_lock: 0
