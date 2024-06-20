@@ -9,7 +9,8 @@ const User = {
         connection.execute(query, [username, email], callback);
     },
     findByEmail: (email, callback) => {
-
+        const query = 'SELECT * FROM users WHERE email = ?';
+        connection.execute(query, [email], callback);
     }
 }
 
