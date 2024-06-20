@@ -40,7 +40,35 @@ const authController = {
         })
     },
     SignIn: (req, res) => {
-        console.log(req.body)
+        // console.log(req.body)
+
+        const {
+            email,
+            password
+        } = req.body;
+
+        User.findByEmail(email, (err, result) => {
+            if(err) throw err
+
+            if(result.length === 0){
+                return res.json({ Error: "User not Found,..." })
+            }
+
+            const person = result[0]
+
+            bcrypt.compare(password, person.password, (err, result) => {
+                if(err) throw err
+
+                if(!result) {
+                    return res.json({ Error: "Password not Match" })
+                }
+                else{
+                    const token = jwt.sign({ email: person.email }, 'your_jwt_secret', { expiresIn: '1h' })
+                    return res.json({ Msg: "Success", Token:token,  })
+                }
+            })
+        })
+
     }
 }
 
