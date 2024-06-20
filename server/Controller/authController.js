@@ -38,6 +38,9 @@ const authController = {
                 }
             }
         })
+    },
+    SignIn: (req, res) => {
+        
     }
 }
 
