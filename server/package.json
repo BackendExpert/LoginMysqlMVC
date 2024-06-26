@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "createcontroller": "create controller",
-    "createmodel": "create model",
-    "createroute": "create route"
+    "createController": "create controller",
+    "createModel": "create model",
+    "createRoute": "create route"
   },
   "keywords": [],
   "author": "",
